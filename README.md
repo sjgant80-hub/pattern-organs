@@ -6,7 +6,26 @@ A funnel pattern organ **grown** from a stem cluster of seven elements, against 
 
 ## The result
 
-Sealed, being measured. The rules, the split, the budget and the sha256 of the sessions and the kernel were committed before any organ was graded on the real sessions; the result lands here whichever way it goes.
+6 of 6 sealed rules held. Over 5 seeds, the grown organ's median held-out AUC was 0.826, the hand-built organ's 0.823, the random arm's 0.816, and PageValues alone 0.807. The grown organ was ahead of the hand-built one in 5 of 5 seeds; the bootstrap called it sure in 3.
+
+| Sealed rule | Result | | Predicted |
+|---|---|---|---|
+| the grown organ's median held-out AUC over the five seeds is higher than the hand-built organ's | median held-out AUC 0.826104 grown vs 0.822631 hand-built | PASS | fail, narrowly — the hand design is a strong prior and 324 evaluations is little for a search over 18 genes; within 0.01 AUC either way |
+| the grown organ beats the hand-built one on held-out AUC in at least 4 of the 5 seeds | grown ahead in 5 of 5 seeds | PASS | fail |
+| in at least 3 of the 5 seeds the bootstrap lower bound of grown minus hand-built is above 0 | bootstrap lower bound above 0 in 3 of 5 seeds | PASS | fail — the two will be too close for the bootstrap to call |
+| the grown organ's median held-out AUC is higher than the random arm's | median held-out AUC 0.826104 grown vs 0.815975 random | PASS | pass — selection should beat drawing blind with the same budget |
+| the grown organ's median held-out AUC is higher than ranking the held-out sessions by PageValues alone | median grown 0.826104 vs PageValues alone 0.806814 | PASS | pass — PageValues alone near 0.80–0.88; the organs near 0.86–0.92 |
+| re-running every seed from this seal gives an identical record — CI re-runs it on every push | CI re-runs every seed from the seal and compares the record | PASS | pass |
+
+| Seed | Grown | Hand-built | Random | Grown − hand (95% interval) |
+|---|---|---|---|---|
+| 1 | 0.823 | 0.823 | 0.819 | +0.001 (−0.010 to +0.013) |
+| 2 | 0.819 | 0.810 | 0.816 | +0.010 (+0.001 to +0.019) |
+| 3 | 0.827 | 0.823 | 0.807 | +0.004 (−0.003 to +0.010) |
+| 4 | 0.826 | 0.815 | 0.828 | +0.012 (+0.004 to +0.020) |
+| 5 | 0.839 | 0.823 | 0.806 | +0.015 (+0.008 to +0.022) |
+
+Held-out AUC on November and December. PageValues alone: 0.807.
 
 ## What it is
 

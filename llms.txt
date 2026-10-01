@@ -2,13 +2,14 @@
 
 > A sealed experiment: a funnel pattern organ grown from a stem cluster of seven elements, against the same organ built by hand, on two held-out months of 12,330 real e-commerce sessions.
 
-Sealed, being measured. The rules, the split, the budget and the sha256 of the sessions and the kernel were committed before any organ was graded on the real sessions; the result lands here whichever way it goes.
+6 of 6 sealed rules held. Over 5 seeds, the grown organ's median held-out AUC was 0.826, the hand-built organ's 0.823, the random arm's 0.816, and PageValues alone 0.807. The grown organ was ahead of the hand-built one in 5 of 5 seeds; the bootstrap called it sure in 3.
 
 ## Key pages
 
 - [Live page](https://sjgant80-hub.github.io/pattern-organs/)
 - [Repository](https://github.com/sjgant80-hub/pattern-organs)
 - [Pre-registration](https://sjgant80-hub.github.io/pattern-organs/data/prereg.json)
+- [The record](https://sjgant80-hub.github.io/pattern-organs/data/run.json)
 
 ## Verify, don't trust
 

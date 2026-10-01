@@ -55,6 +55,16 @@ function bookHtml(organ) {
     + (b.patterns.length ? '<ol class="book">' + b.patterns.map((p) => '<li><span class="when">' + esc(p.when) + '</span> <span class="rate ' + (p.lift >= 1 ? 'up' : 'down') + '">' + p.bought + '% bought · ×' + p.lift + '</span></li>').join('') + '</ol>' : '<p class="quiet">No pattern cleared the bar.</p>')).join('');
 }
 
+// what the five grown champions kept, and the season's toll — counted from the record, never typed
+const kept = run && K.ELEMENTS.map((e) => [e, run.seeds.filter((s) => s.arms.grown.organ.elements.includes(e)).length]).sort((a, b) => b[1] - a[1]);
+const keptLine = run ? 'Across the ' + run.seeds.length + ' seeds the grown champions kept: ' + kept.map(([e, n]) => e + ' ' + n + ' of ' + run.seeds.length).join(', ') + '.' : '';
+const med = (xs) => [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)];
+const seasonLine = run ? 'Inside the training months every arm scored about the same on the inner check (median AUC: grown ' + auc3(med(run.seeds.map((s) => s.arms.grown.fitness)))
+  + ', hand-built ' + auc3(med(run.seeds.map((s) => s.arms.hand.fitness))) + ', random ' + auc3(med(run.seeds.map((s) => s.arms.random.fitness))) + '). On November and December all three fell to about '
+  + auc3(med(run.seeds.map((s) => s.arms.hand.heldAuc))) + ': patterns found from February to October only partly hold in the holiday season, and that drop is far bigger than any gap between the arms. The grown organ is ahead in '
+  + j.wins + ' of ' + run.seeds.length + ' seeds by a small margin (the median gap is ' + sign(j.medians.grown - j.medians.hand) + ' AUC; the bootstrap is sure of it in ' + j.sure + '), and it finds more buyers in its top tenth of sessions in '
+  + run.seeds.filter((s) => s.arms.grown.topTenth > s.arms.hand.topTenth).length + ' of ' + run.seeds.length + ' seeds.' : '';
+
 let verdict, body = '';
 if (!run) {
   verdict = '<p class="big">' + esc(headline) + '</p><p class="quiet">Sealed in <code>data/prereg.json</code>. The question: ' + esc(pre.question) + '</p>';
@@ -70,7 +80,9 @@ if (!run) {
     + '<tr><td>the stem (generation 0)</td><td>' + elementsChips(K.STEM.on) + '</td><td>' + K.WIRINGS[K.STEM.wiring] + '</td><td class="n">' + K.FEATURES.length + '</td></tr>'
     + '<tr><td>hand-built (designed)</td><td>' + elementsChips(K.HAND.on) + '</td><td>' + K.WIRINGS[K.HAND.wiring] + '</td><td class="n">' + K.FEATURES.length + '</td></tr>'
     + run.seeds.map((s) => '<tr><td>grown, seed ' + s.seed + '</td><td>' + elementsChips(onFromKey(s.arms.grown.champion)) + '</td><td>' + esc(s.arms.grown.organ.wiring) + '</td><td class="n">' + s.arms.grown.organ.measures + '</td></tr>').join('')
-    + '</tbody></table></div>';
+    + '</tbody></table>'
+    + '<p class="quiet">' + esc(keptLine) + '</p></div>';
+  body += '<h2>What the numbers say</h2><div class="card"><p style="margin-top:0">' + esc(seasonLine) + '</p></div>';
   body += '<h2>How it grew</h2><div class="card"><p class="quiet" style="margin-top:0">The best organ of each generation, scored on the inner check inside the training months (selection sees this; it never sees November or December).</p>' + curve(run.seeds) + '</div>';
   body += '<h2>The pattern book it grew</h2><div class="card"><p class="quiet" style="margin-top:0">The grown organ of seed ' + medianSeed.seed + ' (the median seed), refit on every training session — what it actually reads into a session. Elements on: ' + esc(medianSeed.arms.grown.organ.elements.join(', ') || 'none') + '; wiring: ' + esc(medianSeed.arms.grown.organ.wiring) + '.</p>' + bookHtml(medianSeed.arms.grown.organ) + '</div>';
 }
@@ -150,7 +162,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);color:v
 <div class="card verdict">${verdict}</div>
 ${body}
 <h2>Re-run it yourself</h2>
-<div class="card"><p style="margin-top:0">One seed again, from the seal, in your browser: the same kernel this page is built from (inlined below), the same sessions, the same budget — all three arms, ${3 * K.budgetOf(CONFIG)} organs fit and scored, then each champion graded on November and December. It takes a minute or two.${run ? ' If the record comes out different by a single character, this page says so.' : ' (The committed record lands once the sealed run is done; until then this shows the result without comparing it.)'}</p>
+<div class="card"><p style="margin-top:0">One seed again, from the seal, in your browser: the same kernel this page is built from (inlined below), the same sessions, the same budget — all three arms, ${3 * K.budgetOf(CONFIG)} organs fit and scored, then each champion graded on November and December. It takes under a minute on a laptop.${run ? ' If the record comes out different by a single character, this page says so.' : ' (The committed record lands once the sealed run is done; until then this shows the result without comparing it.)'}</p>
  <label for="seed">seed</label> <select id="seed">${SEEDS.map((s) => '<option>' + s + '</option>').join('')}</select>
  <button id="rerun" type="button">Re-run this seed</button>
  <div class="bar" aria-hidden="true"><div id="bar"></div></div>
