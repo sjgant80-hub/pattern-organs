@@ -25,7 +25,7 @@ jobs:
       - name: page fixpoint — the live page IS the gated kernel and the real record
         run: |
           node tools/make-page.mjs
-          git diff --exit-code index.html README.md llms.txt
+          git diff --exit-code index.html README.md llms.txt data/verdict.json
       - name: no untraced price anywhere
         run: |
           git clone --quiet https://github.com/sjgant80-hub/fallstack /tmp/fallstack && git -C /tmp/fallstack checkout --quiet 4eeb828

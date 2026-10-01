@@ -260,4 +260,14 @@ const llms = ['# Pattern Organs', '', '> A sealed experiment: a funnel pattern o
 writeFileSync(at('index.html'), page);
 writeFileSync(at('README.md'), md.join('\n'));
 writeFileSync(at('llms.txt'), llms);
+// the verdict, machine-readable, for the organs and the world that read this one (FallWorld's deck vendors it)
+if (run) {
+  const champ = (s, arm) => ({ key: s.arms[arm].champion, elements: s.arms[arm].organ.elements, wiring: s.arms[arm].organ.wiring, heldAuc: s.arms[arm].heldAuc, topTenth: s.arms[arm].topTenth });
+  writeFileSync(at('data/verdict.json'), JSON.stringify({
+    kind: 'pattern-organs-verdict', sealedIn: run.sealedIn, passed: j.passed, of: j.of,
+    rules: j.rules.map((r) => ({ id: r.id, pass: r.pass, value: r.value })), medians: j.medians, wins: j.wins, sure: j.sure,
+    reference: run.reference, seeds: run.seeds.map((s) => ({ seed: s.seed, grown: champ(s, 'grown'), hand: champ(s, 'hand'), random: champ(s, 'random'), grownMinusHand: s.grownMinusHand })),
+    medianSeed: medianSeed.seed, book: medianSeed.arms.grown.organ.books[0],
+  }, null, 1) + '\n');
+}
 console.log('page built · ' + (run ? j.passed + ' of ' + j.of + ' rules' : 'sealed, not yet run'));
