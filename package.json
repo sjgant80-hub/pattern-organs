@@ -1,0 +1,12 @@
+{
+  "name": "pattern-organs",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "organ.mjs",
+  "description": "Pattern organs: a funnel organ grown from a stem cluster of seven elements, against the same organ built by hand, on two held-out months of real shop sessions — sealed first, re-runnable in the browser.",
+  "author": "sjgant80-hub <sjgant80@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test"
+  }
+}
