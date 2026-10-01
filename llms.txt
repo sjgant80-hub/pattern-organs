@@ -1,0 +1,20 @@
+# Pattern Organs
+
+> A sealed experiment: a funnel pattern organ grown from a stem cluster of seven elements, against the same organ built by hand, on two held-out months of 12,330 real e-commerce sessions.
+
+Sealed, being measured. The rules, the split, the budget and the sha256 of the sessions and the kernel were committed before any organ was graded on the real sessions; the result lands here whichever way it goes.
+
+## Key pages
+
+- [Live page](https://sjgant80-hub.github.io/pattern-organs/)
+- [Repository](https://github.com/sjgant80-hub/pattern-organs)
+- [Pre-registration](https://sjgant80-hub.github.io/pattern-organs/data/prereg.json)
+
+## Verify, don't trust
+
+Every number here is generated from the committed seal and record. CI re-runs all five seeds on every push; the live page re-runs any seed in the browser with the same mutation-gated kernel.
+
+## Credits
+
+- Online Shoppers Purchasing Intention Dataset — C. Sakar and Y. Kastro, UCI Machine Learning Repository (2018), DOI 10.24432/C5F88Q, CC BY 4.0.
+- Powered by the Konomi architecture, created by Thomas Frumkin.

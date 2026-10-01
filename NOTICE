@@ -1,0 +1,13 @@
+Pattern Organs
+Copyright 2026 sjgant80-hub. The code is MIT-licensed (see LICENSE).
+
+The sessions file data/online_shoppers_intention.csv is NOT covered by the MIT licence. It is the
+Online Shoppers Purchasing Intention Dataset by C. Sakar and Y. Kastro, UCI Machine Learning Repository (2018),
+DOI 10.24432/C5F88Q, licensed under Creative Commons Attribution 4.0 International (CC BY 4.0),
+https://creativecommons.org/licenses/by/4.0/ . It is redistributed unchanged (sha256
+b3055ee355f59134d851d32641183cb4a8b45def7124d2f50442a042f358e0d9). Introduced in: Sakar, C. O., Polat, S.,
+Katircioglu, M., and Kastro, Y., "Real-time prediction of online shoppers' purchasing intention using multilayer
+perceptron and LSTM recurrent neural networks", Neural Computing & Applications (2019).
+
+The seven elements an organ is grown from are the stages of the estate's capability router, whose seven-stage basis
+is Thomas Frumkin's MACCubeFACE lattice. Powered by the Konomi architecture, created by Thomas Frumkin.
