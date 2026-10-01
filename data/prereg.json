@@ -8,7 +8,7 @@
  "sealed": {
   "data/online_shoppers_intention.csv": "b3055ee355f59134d851d32641183cb4a8b45def7124d2f50442a042f358e0d9",
   "organ.mjs": "d21b07da4a74fb9ee674446b17ee9a957eb05acfc136ffc6ff135b317fb724d2",
-  "tools/run.mjs": "016085e6a82f8fdd4f74b719929ae4103c2c531cb6083517d3856f569f083035"
+  "tools/run.mjs": "fbec1b2875fd179d4cbdab0d3a473905b27df29723878b51a55ca132e488fee3"
  },
  "sessions": {
   "source": "Online Shoppers Purchasing Intention Dataset — C. Sakar and Y. Kastro, UCI Machine Learning Repository (2018), DOI 10.24432/C5F88Q, CC BY 4.0; introduced in Sakar, Polat, Katircioglu and Kastro, \"Real-time prediction of online shoppers' purchasing intention using multilayer perceptron and LSTM recurrent neural networks\", Neural Computing & Applications (2019). 12,330 sessions of one online shop over a year, 1,908 of which bought.",
@@ -171,6 +171,7 @@
   "Before the seal the kernel was only ever run on made-up sessions (its tests), plus one timing pilot on the real training sessions that printed milliseconds per evaluation and nothing else (seed 999, 20 evaluations) — to size the budget.",
   "November and December buy more often than February–October (the holiday season); AUC ranks sessions, so the shift in the base rate does not move it directly, but patterns can still shift.",
   "The seven elements are the capability router's seven stages, whose basis is Thomas Frumkin's MACCubeFACE lattice; what each element MEANS inside a funnel organ is this build's design.",
-  "No language model is used anywhere in this build. The pattern book is the organ; minting a small model from it is a later step, not this one."
+  "No language model is used anywhere in this build. The pattern book is the organ; minting a small model from it is a later step, not this one.",
+  "Sealed twice. The first seal (aadb5ad, pushed, CI green) pinned a runner that could not start: tools/run.mjs imported tools/seal.mjs, which imports tools/run.mjs, and the circular top-level await stopped the process (exit 13) before any organ was fit. The runner now asks the seal to check itself in a separate process. That is the only change; the kernel, the sessions, the arms, the budget, the rules and the predictions are as first sealed, and no organ had been graded on the real sessions."
  ]
 }

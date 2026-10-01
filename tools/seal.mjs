@@ -73,6 +73,7 @@ export function prereg() {
       'November and December buy more often than February–October (the holiday season); AUC ranks sessions, so the shift in the base rate does not move it directly, but patterns can still shift.',
       'The seven elements are the capability router\'s seven stages, whose basis is Thomas Frumkin\'s MACCubeFACE lattice; what each element MEANS inside a funnel organ is this build\'s design.',
       'No language model is used anywhere in this build. The pattern book is the organ; minting a small model from it is a later step, not this one.',
+      'Sealed twice. The first seal (aadb5ad, pushed, CI green) pinned a runner that could not start: tools/run.mjs imported tools/seal.mjs, which imports tools/run.mjs, and the circular top-level await stopped the process (exit 13) before any organ was fit. The runner now asks the seal to check itself in a separate process. That is the only change; the kernel, the sessions, the arms, the budget, the rules and the predictions are as first sealed, and no organ had been graded on the real sessions.',
     ],
   };
 }

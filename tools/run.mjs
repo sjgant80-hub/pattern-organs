@@ -8,7 +8,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { createHash } from 'node:crypto';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
 import { experiment } from '../organ.mjs';
 
 export const CONFIG = { population: 24, elites: 4, generations: 16, resamples: 1000 };
@@ -42,8 +42,8 @@ const has = (f) => process.argv.includes(f);
 // reproduced = a local re-run matched (data/verify.json) — and CI re-runs it on every push, failing if it no longer does
 export const reproduced = () => existsSync(join(ROOT, 'data/verify.json')) && JSON.parse(text('data/verify.json')).reproduced === true;
 if (process.argv[1] && process.argv[1].replace(/\\/g, '/').endsWith('tools/run.mjs')) {
-  const { prereg } = await import('./seal.mjs');
-  const sealed = existsSync(join(ROOT, 'data/prereg.json')) && text('data/prereg.json') === stable(prereg());
+  // the seal's own check, as a separate process (seal.mjs imports this file, so importing it back would deadlock)
+  const sealed = spawnSync(process.execPath, [join(ROOT, 'tools/seal.mjs'), '--check'], { cwd: ROOT }).status === 0;
   if ((has('--run') || has('--verify')) && !sealed) { console.error('not sealed, or the seal does not match its inputs — refusing'); process.exitCode = 1; }
   else if (has('--run')) {
     if (existsSync(join(ROOT, 'data/run.json'))) { console.error('data/run.json exists — the run is done'); process.exitCode = 1; }
