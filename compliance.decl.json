@@ -1,0 +1,10 @@
+{
+ "declared": true,
+ "name": "pattern-organs",
+ "system": "A sealed experiment and its page: small pattern-book models (narrow, rule-like scorers) are fit by a tested kernel to a public, anonymous e-commerce sessions dataset (UCI, CC BY 4.0) and graded on held-out months; the page re-runs the fit in the visitor's browser, calls no model, and collects nothing.",
+ "ai": "narrow",
+ "builtBy": "self",
+ "deployment": "local",
+ "personalData": false,
+ "euOutput": true
+}
